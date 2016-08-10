@@ -397,16 +397,69 @@ window.Game = (function() {
     _drawPauseScreen: function() {
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          console.log('you have won!');
+              var canvas = document.querySelector('canvas');
+              var ctx = canvas.getContext('2d');
+              ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+              ctx.fillRect(40, 10, 250, 150);
+              
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(30, 0, 240, 140);
+              ctx.font = '16px PT Mono';
+              ctx.fillStyle = 'black';
+              ctx.textBaseline = 'hanging';
+              ctx.fillText('УРРРРРРААААААААА!!!', 60, 20);
+              ctx.fillText('Поздравляю! ты выиграл!', 38, 50);
+              ctx.fillText('ты чемпион!', 90, 80);
+          /* console.log('you have won!');*/
           break;
         case Verdict.FAIL:
-          console.log('you have failed!');
+              var canvas = document.querySelector('canvas');
+              var ctx = canvas.getContext('2d');
+              ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+              ctx.fillRect(40, 10, 250, 150);
+              
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(30, 0, 240, 140);
+              ctx.font = '16px PT Mono';
+              ctx.fillStyle = 'black';
+              ctx.textBaseline = 'hanging';
+              ctx.fillText('Извини! ты проиграл!', 38, 50);
+              ctx.fillText('попробуй еще раз!', 50, 80);
+          /*console.log('you have failed!');*/
           break;
         case Verdict.PAUSE:
-          console.log('game is on pause!');
+              var canvas = document.querySelector('canvas');
+              var ctx = canvas.getContext('2d');
+              ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+              ctx.fillRect(40, 10, 250, 150);
+              
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(30, 0, 240, 140);
+              ctx.font = '16px PT Mono';
+              ctx.fillStyle = 'black';
+              ctx.textBaseline = 'hanging';
+              ctx.fillText('ВНИМАНИЕ', 100, 30);
+              ctx.fillText('игра на паузе!', 80, 60);
+              ctx.fillText('жду твоего возвращения,', 40, 80);
+              ctx.fillText('очень!!!', 100, 100);
+          /*console.log('game is on pause!');*/
           break;
         case Verdict.INTRO:
-          console.log('welcome to the game! Press Space to start');
+              var canvas = document.querySelector('canvas');
+              var ctx = canvas.getContext('2d');
+              ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+              ctx.fillRect(40, 10, 250, 150);
+              
+              ctx.fillStyle = '#FFFFFF';
+              ctx.fillRect(30, 0, 240, 140);
+              ctx.font = '16px PT Mono';
+              ctx.fillStyle = 'black';
+              ctx.textBaseline = 'hanging';
+              ctx.fillText('Добро пожаловать!', 70, 30);
+              ctx.fillText('я тебя очень долго ждал!', 30, 60);
+              ctx.fillText('смело нажимай пробел,', 50, 80);
+              ctx.fillText('и начинай игру!!!', 70, 100);
+          /*console.log('welcome to the game! Press Space to start');*/
           break;
       }
     },
