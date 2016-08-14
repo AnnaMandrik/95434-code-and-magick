@@ -397,16 +397,57 @@ window.Game = (function() {
     _drawPauseScreen: function() {
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          console.log('you have won!');
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+          this.ctx.fillRect(320, 30, 250, 150);
+          this.ctx.fillStyle = '#FFFFFF';
+          this.ctx.fillRect(310, 20, 240, 140);
+          this.ctx.font = '16px PT Mono';
+          this.ctx.fillStyle = 'black';
+          this.ctx.textBaseline = 'hanging';
+          this.ctx.fillText('УРРРРРРААААААААА!!!', 340, 50);
+          this.ctx.fillText('Поздравляю! ты выиграл!', 316, 80);
+          this.ctx.fillText('ты чемпион!', 370, 110);
+          /* console.log('you have won!');*/
           break;
         case Verdict.FAIL:
-          console.log('you have failed!');
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+          this.ctx.fillRect(320, 30, 250, 150);
+          this.ctx.fillStyle = '#FFFFFF';
+          this.ctx.fillRect(310, 20, 240, 140);
+          this.ctx.font = '16px PT Mono';
+          this.ctx.fillStyle = 'black';
+          this.ctx.textBaseline = 'hanging';
+          this.ctx.fillText('Извини! ты проиграл!', 336, 60);
+          this.ctx.fillText('попробуй еще раз!', 346, 110);
+          /*console.log('you have failed!');*/
           break;
         case Verdict.PAUSE:
-          console.log('game is on pause!');
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+          this.ctx.fillRect(180, 30, 250, 150);
+          this.ctx.fillStyle = '#FFFFFF';
+          this.ctx.fillRect(170, 20, 240, 140);
+          this.ctx.font = '16px PT Mono';
+          this.ctx.fillStyle = 'black';
+          this.ctx.textBaseline = 'hanging';
+          this.ctx.fillText('ВНИМАНИЕ', 245, 40);
+          this.ctx.fillText('игра на паузе!', 220, 70);
+          this.ctx.fillText('жду твоего возвращения,', 178, 90);
+          this.ctx.fillText('очень!!!', 250, 110);
+          /*console.log('game is on pause!');*/
           break;
         case Verdict.INTRO:
-          console.log('welcome to the game! Press Space to start');
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+          this.ctx.fillRect(180, 30, 250, 150);
+          this.ctx.fillStyle = '#FFFFFF';
+          this.ctx.fillRect(170, 20, 240, 140);
+          this.ctx.font = '16px PT Mono';
+          this.ctx.fillStyle = 'black';
+          this.ctx.textBaseline = 'hanging';
+          this.ctx.fillText('Добро пожаловать!', 205, 40);
+          this.ctx.fillText('я тебя очень долго ждал!', 185, 80);
+          this.ctx.fillText('смело нажимай пробел,', 185, 100);
+          this.ctx.fillText('и начинай игру!!!', 200, 120);
+          /*console.log('welcome to the game! Press Space to start');*/
           break;
       }
     },
