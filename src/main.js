@@ -1,14 +1,13 @@
 'use strict';
 
 (function() {
+  var gameAddMain = require('./game');
+  var formAddMain = require('./form');
   var game = new window.Game(document.querySelector('.demo'));
   game.initializeLevelAndStart();
   game.setGameStatus(window.Game.Verdict.INTRO);
 
   var formOpenButton = document.querySelector('.reviews-controls-new');
-
-  var form = require('./form');
-  var game = require('./game');
 
   /** @param {MouseEvent} evt */
   formOpenButton.onclick = function(evt) {
