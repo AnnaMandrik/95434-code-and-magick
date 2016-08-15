@@ -1,8 +1,8 @@
 'use strict';
 
 (function() {
-  var gameAddMain = require('./game');
-  var formAddMain = require('./form');
+  require('./game');
+  require('./form');
   var game = new window.Game(document.querySelector('.demo'));
   game.initializeLevelAndStart();
   game.setGameStatus(window.Game.Verdict.INTRO);
