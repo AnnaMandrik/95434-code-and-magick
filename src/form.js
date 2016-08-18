@@ -25,35 +25,32 @@ window.form = (function() {
       }
     }
   };
-  var name= document.querySelector('#review-name','value');
+  var name= document.querySelector('#review-name');
   var text = document.querySelector('#review-text');
   var nameFields = document.querySelector('.review-fields-name');
-  var markFirst = document.querySelector('#review-mark-1');
-  var markSecond = document.querySelector('#review-mark-2');
   var formControls = document.querySelector('.review-fields');
   var buttons = document.querySelector('.review-submit');
+  var mark = document.querySelector('.review-form-group-mark input[type=radio]:checked');
 
   function validateOnSubmit() {
-    var valid = true;
+    var valid= true;
     if (valid) {
-      if (name) {
-        name.setAttribute('value','');
-        name.setAttribute('required','required');
+      if (name.value) {
+        name.setAttribute('required','text');
         nameFields.style.display = 'none';
       }
-      if (markFirst.getAttribute('checked') || markSecond.getAttribute('checked')){
-        text.setAttribute('value','');
-        text.setAttribute('required','required');
+      if (mark.value){
+        text.setAttribute('required','text');
         formControls.style.display = 'none';
       }
     }else {
-      result (false);
       buttons.setAttribute('disabled', 'disabled');
     }
   }
    validateOnSubmit();
   name.onchange = validateOnSubmit;
   text.onchange = validateOnSubmit;
+  mark.onchange = validateOnSubmit;
 
   formCloseButton.onclick = function(evt) {
     evt.preventDefault();
