@@ -31,22 +31,24 @@ window.form = (function() {
   var formControls = document.querySelector('.review-fields');
   var buttons = document.querySelector('.review-submit');
   var mark = document.querySelector('.review-form-group-mark input[type=radio]:checked');
-
   function validateOnSubmit() {
+    if (mark.value) {
+      var markNumber = parseInt(mark.value, 10);
+      if (markNumber < 3) {
+        text.setAttribute('required', 'required');
+      }
+    }
+    name.setAttribute('required', 'required');
+
     var valid = true;
     if (valid) {
       if (name.value) {
-        name.setAttribute('required', 'text');
         nameFields.style.display = 'none';
       }
-        var markNumber = parseInt(mark.value, 10);
-        if (markNumber < 3) {
-          if (text.value) {
-            text.setAttribute('required', 'text');
-            formControls.style.display = 'none';
-          }
-        }
-    }else {
+      if (text.value) {
+        formControls.style.display = 'none';
+      }
+    } else {
       buttons.setAttribute('disabled', 'disabled');
     }
   }
@@ -54,6 +56,7 @@ window.form = (function() {
   name.onchange = validateOnSubmit;
   text.onchange = validateOnSubmit;
   mark.onchange = validateOnSubmit;
+
 
   formCloseButton.onclick = function(evt) {
     evt.preventDefault();
