@@ -66,7 +66,7 @@ window.form = (function() {
   name.oninput = validateOnSubmit;
   text.oninput = validateOnSubmit;
   var marks = document.querySelector('.review-form-group-mark');
-  marks.oncgange = validateOnSubmit;
+  marks.onchange = validateOnSubmit;
 
 
   formCloseButton.onclick = function(evt) {
