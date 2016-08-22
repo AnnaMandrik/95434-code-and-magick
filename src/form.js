@@ -28,34 +28,45 @@ window.form = (function() {
   var name = document.querySelector('#review-name');
   var text = document.querySelector('#review-text');
   var nameFields = document.querySelector('.review-fields-name');
+  var textFields = document.querySelector('.review-fields-text');
   var formControls = document.querySelector('.review-fields');
   var buttons = document.querySelector('.review-submit');
-  var mark = document.querySelector('.review-form-group-mark input[type=radio]:checked');
   function validateOnSubmit() {
-    if (mark.value) {
-      var markNumber = parseInt(mark.value, 10);
-      if (markNumber < 3) {
-        text.setAttribute('required', 'required');
-      }
-    }
-    name.setAttribute('required', 'required');
-
     var valid = true;
-    if (valid) {
-      if (name.value) {
-        nameFields.style.display = 'none';
-      }
+    var needFillTextField;
+    var mark = document.querySelector('.review-form-group-mark input[type=radio]:checked');
+    var markNumber = parseInt(mark.value, 10);
+    needFillTextField = markNumber < 3;
+    if (name.value) {
+      nameFields.style.display = 'none';
+    } else {
+      nameFields.style.display = '';
+      valid = false;
+    }
+    if (needFillTextField) {
       if (text.value) {
-        formControls.style.display = 'none';
+        textFields.style.display = 'none';
+      } else {
+        textFields.style.display = '';
+        valid = false;
       }
     } else {
+      textFields.style.display = 'none';
+    }
+    if (valid) {
+      formControls.style.display = 'none';
+      buttons.removeAttribute('disabled');
+    } else {
+      formControls.style.display = '';
       buttons.setAttribute('disabled', 'disabled');
     }
   }
+
   validateOnSubmit();
-  name.onchange = validateOnSubmit;
-  text.onchange = validateOnSubmit;
-  mark.onchange = validateOnSubmit;
+  name.oninput = validateOnSubmit;
+  text.oninput = validateOnSubmit;
+  var marks = document.querySelector('.review-form-group-mark');
+  marks.oncgange = validateOnSubmit;
 
 
   formCloseButton.onclick = function(evt) {
