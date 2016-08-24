@@ -60,8 +60,6 @@ window.form = (function() {
       formControls.style.display = '';
       buttons.setAttribute('disabled', 'disabled');
     }
-    name.cookie = 'review-name=name.value; placeholder; expires=(now - current)';
-    mark.cookie = 'review-mark=mark; placeholder; expires=(now - current)';
   }
 
   validateOnSubmit();
@@ -69,16 +67,26 @@ window.form = (function() {
   text.oninput = validateOnSubmit;
   var marks = document.querySelector('.review-form-group-mark');
   marks.onchange = validateOnSubmit;
-  var searchForm = document.querySelector('.overlay review-form');
-  searchForm.onsubmit = function () {
-    browserCookies.set('review-name', 'name.value');
-    browserCookies.set('review-mark', 'mark');
-  };
-  var current = new Date();
-  current.getFullYear();
-  new Date(1991, 9, 12);
-  var now = new Date();
+  var reviewForm = document.querySelector('.review-form');
+   reviewForm.onsubmit = (function() {
+     var reviewMark = document.querySelector('input[name="review-mark"]:checked').value;
+     var current = new Date();
+     var secondTime = 1000 * 60 * 60 * 24;
+     current.getFullYear();
+     var birthdayGraceHopper = new Date(current.getFullYear(), 9, 12);
+     if (current < birthdayGraceHopper ) {
+       birthdayGraceHopper.setFullYear(current.getFullYear() - 1);
+     }
+     return (current - birthdayGraceHopper) /secondTime;
+     browserCookies.set('review-name', name.value, expires);
+     browserCookies.set('review-mark',  reviewMark, expires);
 
+  });
+  name.value = browserCookies.get('review-name') || name.value;
+  if (browserCookies.get('review-mark')) {
+    var reviewMarkRadio = document.getElementById('review-mark-' + browserCookies.get('review-mark'));
+    reviewMarkRadio.checked = true;
+  }
 
   formCloseButton.onclick = function(evt) {
     evt.preventDefault();
