@@ -70,10 +70,9 @@ window.form = (function() {
   var reviewForm = document.querySelector('.review-form');
   reviewForm.onsubmit = (function() {
     var reviewMark = document.querySelector('input[name="review-mark"]:checked').value;
-    var expireDays = function () {
+    var expireDays = function() {
       var current = new Date();
       var secondTime = 1000 * 60 * 60 * 24;
-      current.getFullYear();
       var birthdayGraceHopper = new Date(current.getFullYear(), 11, 9);
       if (current < birthdayGraceHopper) {
         birthdayGraceHopper.setFullYear(current.getFullYear() - 1);
