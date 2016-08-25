@@ -1,6 +1,6 @@
 'use strict';
 
-
+var browserCookies = require('browser-cookies');
 window.form = (function() {
   var formContainer = document.querySelector('.overlay-container');
   var formCloseButton = document.querySelector('.review-form-close');
@@ -67,7 +67,26 @@ window.form = (function() {
   text.oninput = validateOnSubmit;
   var marks = document.querySelector('.review-form-group-mark');
   marks.onchange = validateOnSubmit;
-
+  var reviewForm = document.querySelector('.review-form');
+  reviewForm.onsubmit = (function() {
+    var reviewMark = document.querySelector('input[name="review-mark"]:checked').value;
+    var expireDays = function() {
+      var current = new Date();
+      var secondTime = 1000 * 60 * 60 * 24;
+      var birthdayGraceHopper = new Date(current.getFullYear(), 11, 9);
+      if (current < birthdayGraceHopper) {
+        birthdayGraceHopper.setFullYear(current.getFullYear() - 1);
+      }
+      return Math.round((current - birthdayGraceHopper) / secondTime);
+    };
+    browserCookies.set('review-name', name.value, {expires: expireDays()});
+    browserCookies.set('review-mark', reviewMark, {expires: expireDays()});
+  });
+  name.value = browserCookies.get('review-name') || name.value;
+  if (browserCookies.get('review-mark')) {
+    var reviewMarkRadio = document.getElementById('review-mark-' + browserCookies.get('review-mark'));
+    reviewMarkRadio.checked = true;
+  }
 
   formCloseButton.onclick = function(evt) {
     evt.preventDefault();
