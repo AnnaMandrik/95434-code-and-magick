@@ -68,19 +68,20 @@ window.form = (function() {
   var marks = document.querySelector('.review-form-group-mark');
   marks.onchange = validateOnSubmit;
   var reviewForm = document.querySelector('.review-form');
-   reviewForm.onsubmit = (function() {
-     var reviewMark = document.querySelector('input[name="review-mark"]:checked').value;
-     var current = new Date();
-     var secondTime = 1000 * 60 * 60 * 24;
-     current.getFullYear();
-     var birthdayGraceHopper = new Date(current.getFullYear(), 9, 12);
-     if (current < birthdayGraceHopper ) {
-       birthdayGraceHopper.setFullYear(current.getFullYear() - 1);
-     }
-     return (current - birthdayGraceHopper) /secondTime;
-     browserCookies.set('review-name', name.value, expires);
-     browserCookies.set('review-mark',  reviewMark, expires);
-
+  reviewForm.onsubmit = (function() {
+    var reviewMark = document.querySelector('input[name="review-mark"]:checked').value;
+    var expireDays = function () {
+      var current = new Date();
+      var secondTime = 1000 * 60 * 60 * 24;
+      current.getFullYear();
+      var birthdayGraceHopper = new Date(current.getFullYear(), 11, 9);
+      if (current < birthdayGraceHopper) {
+        birthdayGraceHopper.setFullYear(current.getFullYear() - 1);
+      }
+      return Math.round((current - birthdayGraceHopper) / secondTime);
+    };
+    browserCookies.set('review-name', name.value, {expires: expireDays()});
+    browserCookies.set('review-mark', reviewMark, {expires: expireDays()});
   });
   name.value = browserCookies.get('review-name') || name.value;
   if (browserCookies.get('review-mark')) {
