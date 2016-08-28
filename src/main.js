@@ -3,6 +3,7 @@
 (function() {
   require('./game');
   require('./form');
+  require('./reviews');
   var game = new window.Game(document.querySelector('.demo'));
   game.initializeLevelAndStart();
   game.setGameStatus(window.Game.Verdict.INTRO);
