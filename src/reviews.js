@@ -1,9 +1,8 @@
 'use strict';
 
-
+var url = 'http://localhost:1506/api/reviews';
 var createCallback = function(url, callback) {
-  var url = 'http://localhost:1506/api/reviews';
-  window.JSONPCallback = function (data) {
+  window.JSONPCallback = function(data) {
     if (typeof callback === 'function') {
       callback(data);
     }
@@ -12,10 +11,11 @@ var createCallback = function(url, callback) {
   scriptTag.src = url + '?callback=JSONPCallback';
   document.body.appendChild(scriptTag);
 };
-(function() {
-  if (createCallback()) {
-      var reviews = data;
-    }
+var reviews;
+(function(reviews) {
+   createCallback(url, function(data){
+      reviews(data);
+  });
 })();
 
 
