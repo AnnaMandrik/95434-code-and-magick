@@ -1,33 +1,10 @@
 'use strict';
 
-define([
-  './load',
-  './review'
-], function () {
-  var reviews;
-  var reviewsFilter = document.querySelector('.reviews-filter');
-  /**var reviewTemplate = document.querySelector('#review-template');**/
-  var reviewList = document.querySelector('.reviews-list');
-  /**var elementToClone = (reviewTemplate.content || reviewTemplate).querySelector('.review');
-**/
-  reviewsFilter.classList.add('invisible');
+define([], function() {
 
-  /**var createCallback = function(url, callback) {
-  window.JSONPCallback = function(data) {
-    if (typeof callback === 'function') {
-      callback(data);
-    }
-  };
-  var scriptTag = document.createElement('script');
-  scriptTag.src = url + '?callback=JSONPCallback';
-  document.body.appendChild(scriptTag);
-};**/
-  var renderReviewsList = function(reviews) {
-    reviews.forEach(function (review) {
-      showFeedback(review, reviewList);
-    });
-  };
-  /**function showFeedback(review, container) {
+  var reviewTemplate = document.querySelector('#review-template');
+  var elementToClone = (reviewTemplate.content || reviewTemplate).querySelector('.review');
+  function showFeedback(review, container) {
     var element = elementToClone.cloneNode(true);
     var reviewAuthor = element.querySelector('.review-author');
     var WIDTH_ONE_STAR = 40;
@@ -54,9 +31,7 @@ define([
     element.querySelector('.review-quiz').title = review.review_usefulness;
     container.appendChild(element);
     return element;
-  }**/
-
-  reviewsFilter.classList.remove('invisible');
+  }
+  return showFeedback;
 });
-
 

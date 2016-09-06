@@ -1,9 +1,10 @@
 'use strict';
 
-(function() {
-  require('./game');
-  require('./form');
-  require('./reviews');
+define([
+  './game',
+  './form',
+  './reviews'
+  ],  function(form, Game, renderReviewsList) {
   var game = new window.Game(document.querySelector('.demo'));
   game.initializeLevelAndStart();
   game.setGameStatus(window.Game.Verdict.INTRO);
@@ -23,4 +24,5 @@
   window.form.onClose = function() {
     game.setDeactivated(false);
   };
-})();
+  renderReviewsList();
+});
