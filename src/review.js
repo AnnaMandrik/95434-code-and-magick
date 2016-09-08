@@ -1,6 +1,6 @@
 'use strict';
 
-var reviews = require('./reviews');
+var reviews = require('./reviews.js');
 var reviewTemplate = document.querySelector('#review-template');
 var elementToClone = (reviewTemplate.content || reviewTemplate).querySelector('.review');
 function showFeedback(review, container) {
@@ -31,6 +31,6 @@ function showFeedback(review, container) {
   container.appendChild(element);
   return element;
 }
-module.exports = showFeedback;
+module.exports.showFeedback = showFeedback;
 
 

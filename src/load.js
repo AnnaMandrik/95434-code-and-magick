@@ -9,5 +9,5 @@ var createCallback = function(url, callback) {
   scriptTag.src = url + '?callback=JSONPCallback';
   document.body.appendChild(scriptTag);
 };
-module.exports = createCallback;
+module.exports.createCallback = createCallback;
 

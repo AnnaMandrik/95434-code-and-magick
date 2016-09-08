@@ -1,9 +1,10 @@
 'use strict';
 
-var Game = require('./game');
-var form = require('./form');
-var reviews = require('./reviews');
-
+var Game = require('./game.js');
+var form = require('./form.js');
+var load = require('./load.js');
+var review = require('./review.js');
+var reviews = require('./reviews.js');
 var game = new Game(document.querySelector('.demo'));
 game.initializeLevelAndStart();
 game.setGameStatus(Game.Verdict.INTRO);
@@ -23,5 +24,5 @@ formOpenButton.onclick = function(evt) {
 form.onClose = function() {
   game.setDeactivated(false);
 };
-module.exports = renderReviewsList();
+
 
