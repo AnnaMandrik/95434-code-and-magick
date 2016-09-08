@@ -1,28 +1,27 @@
 'use strict';
 
-define([
-  './game',
-  './form',
-  './reviews'
-  ],  function(form, Game, renderReviewsList) {
-  var game = new window.Game(document.querySelector('.demo'));
-  game.initializeLevelAndStart();
-  game.setGameStatus(window.Game.Verdict.INTRO);
+var Game = require('./game');
+var form = require('./form');
+var reviews = require('./reviews');
 
-  var formOpenButton = document.querySelector('.reviews-controls-new');
+var game = new Game(document.querySelector('.demo'));
+game.initializeLevelAndStart();
+game.setGameStatus(Game.Verdict.INTRO);
 
-  /** @param {MouseEvent} evt */
-  formOpenButton.onclick = function(evt) {
-    evt.preventDefault();
+var formOpenButton = document.querySelector('.reviews-controls-new');
 
-    window.form.open(function() {
-      game.setGameStatus(window.Game.Verdict.PAUSE);
-      game.setDeactivated(true);
-    });
-  };
+/** @param {MouseEvent} evt */
+formOpenButton.onclick = function(evt) {
+  evt.preventDefault();
 
-  window.form.onClose = function() {
-    game.setDeactivated(false);
-  };
-  renderReviewsList();
-});
+  form.open(function() {
+    game.setGameStatus(Game.Verdict.PAUSE);
+    game.setDeactivated(true);
+  });
+};
+
+form.onClose = function() {
+  game.setDeactivated(false);
+};
+module.exports = renderReviewsList();
+
