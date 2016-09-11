@@ -2,8 +2,6 @@
 
 var Game = require('./game.js');
 var form = require('./form.js');
-var load = require('./load.js');
-var review = require('./review.js');
 var reviews = require('./reviews.js');
 var game = new Game(document.querySelector('.demo'));
 game.initializeLevelAndStart();

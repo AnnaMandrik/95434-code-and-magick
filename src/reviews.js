@@ -2,19 +2,16 @@
 
 var load = require('./load.js');
 var review = require('./review.js');
-var reviews = require('./reviews.js');
-reviews.createCallback();
-reviews.showFeedback();
 var reviewsFilter = document.querySelector('.reviews-filter');
 var reviewList = document.querySelector('.reviews-list');
 reviewsFilter.classList.add('invisible');
-createCallback('http://localhost:1506/api/reviews', function(data) {
-  reviews = data;
+load.createCallback('http://localhost:1506/api/reviews', function(data) {
+  var reviews = data;
   renderReviewsList(reviews);
 });
 var renderReviewsList = function(reviews) {
-  reviews.forEach(function (review) {
-    showFeedback(review, reviewList);
+  reviews.forEach(function(reviewData) {
+    review.showFeedback(reviewData, reviewList);
   });
 };
 reviewsFilter.classList.remove('invisible');

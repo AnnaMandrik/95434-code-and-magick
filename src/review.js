@@ -1,6 +1,5 @@
 'use strict';
 
-var reviews = require('./reviews.js');
 var reviewTemplate = document.querySelector('#review-template');
 var elementToClone = (reviewTemplate.content || reviewTemplate).querySelector('.review');
 function showFeedback(review, container) {
