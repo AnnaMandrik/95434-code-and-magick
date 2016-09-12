@@ -2,7 +2,7 @@
 
 var Game = require('./game.js');
 var form = require('./form.js');
-var reviews = require('./reviews.js');
+require('./reviews.js');
 var game = new Game(document.querySelector('.demo'));
 game.initializeLevelAndStart();
 game.setGameStatus(Game.Verdict.INTRO);
