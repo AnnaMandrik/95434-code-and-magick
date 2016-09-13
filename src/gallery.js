@@ -20,21 +20,21 @@ var Gallery = function(pictures) {
   };
   this.photoNumberElement = photoNumberElement;
   this.photosСounterElement = photosСounterElement;
-  this.addControlsListeners = function() {
-    this.controls.closeButtonElement.onclick = function() {
+  Galery.prototype.addControlsListeners = function() {
+    this.controls.closeButtonElement.onclick = function () {
       self.onCloseButtonElementClick();
     };
-    this.controls.leftButtonElement.onclick = function() {
+    this.controls.leftButtonElement.onclick = function () {
       self.onLeftButtonElementClick();
     };
-    this.controls.rightButtonElement.onclick = function() {
+    this.controls.rightButtonElement.onclick = function () {
       self.onRightButtonElementClick();
     };
-    this.deleteControlsListeners = function() {
-      this.controls.closeButtonElement.onclick = null;
-      this.controls.leftButtonElement.onclick = null;
-      this.controls.rightButtonElement.onclick = null;
-    };
+  };
+  Galery.prototype.deleteControlsListeners = function() {
+    this.controls.closeButtonElement.onclick = null;
+    this.controls.leftButtonElement.onclick = null;
+    this.controls.rightButtonElement.onclick = null;
   };
   Gallery.prototype.show = function(imageNumber) {
     this.rootElement.classList.add('invisible');
