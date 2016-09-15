@@ -1,6 +1,6 @@
 'use strict';
 
-var self = this;
+
 var Gallery = function(pictures) {
   var galleryElement = document.querySelector('.overlay-gallery');
   var galleryPreviewElement = galleryElement.querySelector('.overlay-gallery-preview');
@@ -23,6 +23,7 @@ var Gallery = function(pictures) {
 };
 
 Gallery.prototype.addControlsListeners = function() {
+  var self = this;
   this.controls.closeButtonElement.onclick = function() {
     self.onCloseButtonElementClick();
   };
