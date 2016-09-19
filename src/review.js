@@ -2,7 +2,7 @@
 
 var reviewTemplate = document.querySelector('#review-template');
 var elementToClone = (reviewTemplate.content || reviewTemplate).querySelector('.review');
-var showFeedback = function(review, container) {
+function showFeedback(review, container) {
   var element = elementToClone.cloneNode(true);
   var reviewAuthor = element.querySelector('.review-author');
   var WIDTH_ONE_STAR = 40;
@@ -29,7 +29,7 @@ var showFeedback = function(review, container) {
   element.querySelector('.review-quiz').title = review.review_usefulness;
   container.appendChild(element);
   return element;
-}();
+}
 
 module.exports.showFeedback = showFeedback;
 
