@@ -11,8 +11,8 @@ load.createCallback('http://localhost:1506/api/reviews', function(data) {
 });
 var renderReviewsList = function(reviews) {
   reviews.forEach(function(reviewData) {
-    var review = new Review();
-    review(reviewData, reviewList);
+    var review = new Review(reviewData, reviewList);
+    console.log(review);
   });
 };
 reviewsFilter.classList.remove('invisible');
