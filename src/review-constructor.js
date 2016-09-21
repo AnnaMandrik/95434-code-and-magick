@@ -1,11 +1,11 @@
 'use strict';
 
-var Review = function(data) {
+var Review = function(data, container) {
   this.data = data;
   this.element = this.createReviewElement();
   this.answerYes = document.querySelector('.review-quiz-answer-yes');
   this.answerNo = document.querySelector('.review-quiz-answer-no');
-
+  container.appendChild(this.element);
 };
 
 Review.prototype.createReviewElement = function() {
