@@ -30,6 +30,7 @@ function showFeedback(review, container) {
   container.appendChild(element);
   return element;
 }
+
 module.exports.showFeedback = showFeedback;
 
 

@@ -1,7 +1,7 @@
 'use strict';
 
 var load = require('./load.js');
-var review = require('./review.js');
+var Review = require('./review-constructor.js');
 var reviewsFilter = document.querySelector('.reviews-filter');
 var reviewList = document.querySelector('.reviews-list');
 reviewsFilter.classList.add('invisible');
@@ -11,7 +11,8 @@ load.createCallback('http://localhost:1506/api/reviews', function(data) {
 });
 var renderReviewsList = function(reviews) {
   reviews.forEach(function(reviewData) {
-    review.showFeedback(reviewData, reviewList);
+    var review = new Review(reviewData, reviewList);
+    console.log(review);
   });
 };
 reviewsFilter.classList.remove('invisible');
